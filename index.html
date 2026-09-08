@@ -1,271 +1,562 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creator Finder | Empowering Creators & Companies</title>
-    <style>
-        /* Base Theme: Light, clean corporate aesthetic based on the main presentation slides[cite: 1] */
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-accent-soft: #fce7f3; /* Soft pink from the profile slide[cite: 1] */
-            --text-main: #111827;
-            --text-secondary: #4b5563;
-            --accent-blue: #0ea5e9; /* Blue from the presentation icons and backgrounds[cite: 1] */
-            --accent-dark-blue: #1e3a8a;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --border-color: #e5e7eb;
-        }
-
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 5%;
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-dark-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-left: 2.5rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        .nav-btn {
-            background: var(--accent-dark-blue);
-            color: white !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-
-        .nav-btn:hover {
-            background: var(--accent-blue);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 8rem 5% 6rem;
-            text-align: center;
-            background-color: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero h1 span {
-            color: var(--accent-blue);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: var(--text-secondary);
-        }
-
-        .btn-primary {
-            background: var(--accent-blue);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-dark-blue);
-        }
-
-        /* Features/Grid Section */
-        .container {
-            padding: 5rem 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            color: var(--accent-dark-blue);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            color: var(--text-main);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .card ul li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .card ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-
-        .ai-badge {
-            display: inline-block;
-            background: var(--bg-accent-soft);
-            color: #be185d;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="logo">Creator Finder</div>
-        <div class="nav-links">
-            <a href="#creators">For Creators</a>
-            <a href="#companies">For Companies</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#login" class="nav-btn">Sign In</a>
-        </div>
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260908-05-b9d8a99","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFLd8sKbwc,2","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Libre Baskerville":"YACgEUFdPdA,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YADLjI9qxTA,0","Nunito":"YACgEX8C5Gg,0","Oleo Script":"YACgEQQ14jI,0","Phantom Sans":"YAHO2E8Pb88,0","Playfair Display":"YACgEYmuCJE,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YADWjpfPmdk,0","Raleway":"YACgEVg3xZg,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Ubuntu":"YACgERDU--Q,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YADlN8CFZ8Q,0","ui-sans-serif":"YACkoN-xg4g,0"}}');</script><script src="/_sdk/9e99ecf74af2a081.telemetry_sdk.js" integrity="sha512-tZ7fmfTx2KpCLjXQnEuL9azQ4A5+7+xumsx6r/WYVD0zCP/8LP8hDeCypMQesmP+WyAew4g7l5Ah23Bjd6yoVg=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Finder — Empowering Creators &amp; Companies</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/fbe2ebfd64647c54.data_sdk.js" integrity="sha512-vkTX6CfvpHc3WbjK+tFJCaDuw4ERA4aEV/e5/7+MMJPMTF4RJYCI6CAwJBT/gtDW+dba4uLSsPUgDjVDHWtgUQ=="></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --cream:#fbf7f1; --ink:#0a0a0a; --muted:#5a5551; --crimson:#c91d3d; --blush:#f8dfdc; --blue:#0e569b; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Montserrat,sans-serif; color:var(--ink); background:var(--cream); }
+    .site-shell { width:100%; overflow:hidden; position:relative; }
+    .site-shell:before,.site-shell:after { content:""; position:absolute; z-index:0; border-radius:999px; background:var(--blush); opacity:.7; pointer-events:none; }
+    .site-shell:before { width:470px; height:470px; top:160px; right:-250px; }
+    .site-shell:after { width:370px; height:370px; top:1350px; left:-250px; }
+    header,main,footer { position:relative; z-index:1; }
+    .section-pad { padding:92px 24px; }
+    .section-inner { max-width:1180px; margin:0 auto; }
+    .eyebrow { color:var(--crimson); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    .section-title { font-size:clamp(32px,5vw,58px); line-height:1.02; letter-spacing:-.05em; font-weight:900; max-width:760px; }
+    .red-rule { height:5px; width:108px; background:var(--crimson); border-radius:999px; margin:19px 0 32px; }
+    .lift { transition:transform .25s ease,box-shadow .25s ease; }
+    .lift:hover { transform:translateY(-5px); box-shadow:0 22px 40px rgba(20,13,11,.12); }
+    .focus-ring:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    .nav-link { font-size:12px; font-weight:700; color:#393532; transition:color .2s ease; }
+    .nav-link:hover { color:var(--crimson); }
+    .primary-btn { background:var(--crimson); color:#fff; font-weight:800; border-radius:999px; padding:14px 21px; display:inline-flex; align-items:center; justify-content:center; gap:9px; transition:transform .2s ease,background .2s ease; }
+    .primary-btn:hover { background:#a81430; transform:translateY(-2px); }
+    .secondary-btn { border:1.5px solid #191716; background:#fff; color:#171717; font-weight:800; border-radius:999px; padding:14px 21px; display:inline-flex; align-items:center; justify-content:center; gap:9px; transition:transform .2s ease,background .2s ease; }
+    .secondary-btn:hover { background:#f3ebe6; transform:translateY(-2px); }
+    .card-line { border-top:6px solid var(--crimson); }
+    .soft-card { border:1px solid rgba(10,10,10,.08); box-shadow:0 14px 32px rgba(22,13,10,.07); }
+    .icon-disc { width:48px; height:48px; border-radius:50%; background:#fff3f1; color:var(--crimson); display:flex; align-items:center; justify-content:center; flex:none; }
+    .step-num { width:36px;height:36px;border-radius:50%; background:var(--crimson); color:white; display:grid;place-items:center;font-size:13px;font-weight:900; }
+    .filter-select { border:1px solid #ded8d2; background:#fff; border-radius:10px; padding:9px 30px 9px 11px; font:600 12px Montserrat,sans-serif; color:#332e2b; }
+    .status-dot { width:8px; height:8px; border-radius:999px; background:#35a56d; display:inline-block; }
+    .modal-backdrop { background:rgba(10,10,10,.55); }
+    .hidden-panel { display:none; }
+    @media (max-width:760px) { .desktop-nav { display:none; } .section-pad { padding:68px 20px; } .profile-grid { grid-template-columns:1fr!important; } }
+    @media (min-width:761px) { .mobile-toggle,.mobile-panel { display:none!important; } }
+  </style>
+  <script src="/_sdk/fcb6dc01f91829ac.resizing_sdk.js" type="text/javascript" integrity="sha512-YK8JfnN705qaEaVhiL7pcVB2Rs/BbdX5yxV55Az8zT/1JanyEWTw9HqCF915m9iV1YEaoil8qsjJz03l1Kb0Ug=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(251, 247, 241);">
+  <div class="site-shell">
+   <header class="w-full sticky top-0 bg-[#fbf7f1]/95 backdrop-blur border-b border-black/5">
+    <nav class="max-w-[1180px] mx-auto px-5 py-4 flex items-center justify-between gap-5" aria-label="Primary navigation"><a href="#top" class="focus-ring flex items-center gap-3 rounded-lg"> <img data-template-id="brand-logo" loading="lazy" class="canva-image w-[138px] h-9 object-contain object-left" src="canva://MAHUm8pcTAc/1" alt="Creator Finder logo"> </a>
+     <div class="desktop-nav flex items-center gap-6"><a data-template-id="nav-discover" class="canva-link nav-link focus-ring" href="#dashboard" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Discover Creators</a> <a data-template-id="nav-companies" class="canva-link nav-link focus-ring" href="#companies" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">For Companies</a> <a data-template-id="nav-how" class="canva-link nav-link focus-ring" href="#how-it-works" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">How It Works</a> <a data-template-id="nav-trust" class="canva-link nav-link focus-ring" href="#trust" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Trust &amp; Verification</a>
+     </div>
+     <div class="flex items-center gap-3"><button data-template-id="header-profile-cta" class="canva-button primary-btn focus-ring text-sm" type="button" id="open-profile-modal" style="background: rgb(201, 29, 61); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">Sign In / Create Profile</button> <button class="mobile-toggle focus-ring rounded-lg p-2" type="button" id="menu-button" aria-label="Open navigation menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+     </div>
     </nav>
-
-    <section class="hero">
-        <h1>Empowering Creators & <span>Companies</span></h1>
-        <p>A unified platform providing creators the perfect stage to grow, while equipping companies with the ultimate tool to discover the talent they need.</p>
-        <a href="#register" class="btn-primary">Create Your Profile</a>
-    </section>
-
-    <section class="container" id="features">
-        <h2 class="section-title">Built to Connect and Collaborate</h2>
-        <div class="grid">
-            
-            <!-- Creator Profile Setup -->
-            <div class="card" id="creators">
-                <h3>Creator Profiles</h3>
-                <p>Discover your niche and showcase work beautifully with rich, detailed profiles[cite: 1].</p>
-                <ul>
-                    <li>Photo, Name, and Intro Video</li>
-                    <li>Portfolio Images (5-6 uploads)</li>
-                    <li>Experience & Full Work Details</li>
-                    <li>Contact Info (Insta, WhatsApp, Email)</li>
-                </ul>
-            </div>
-
-            <!-- Company Profile Setup -->
-            <div class="card" id="companies">
-                <h3>Company Profiles</h3>
-                <p>Find creators that perfectly fit your product and brand identity[cite: 1].</p>
-                <ul>
-                    <li>Brand Name & Company Details</li>
-                    <li>Product Showcases</li>
-                    <li>Specific Creator Needs & Smart Filters</li>
-                    <li>Reach-out Email & Instagram Handle</li>
-                </ul>
-            </div>
-
-            <!-- Dashboard -->
-            <div class="card" id="dashboard">
-                <h3>Unified Dashboard</h3>
-                <p>Manage outreach and collaborations efficiently in one central hub[cite: 1].</p>
-                <ul>
-                    <li>Track Companies You Contacted</li>
-                    <li>Track Creators Who Reached Out</li>
-                    <li>Add Recent Links & Track Campaigns</li>
-                </ul>
-            </div>
-
-            <!-- AI & Verification -->
-            <div class="card" id="verification">
-                <div class="ai-badge">AI Assistant Guided</div>
-                <h3>Trust & Verification</h3>
-                <p>Secure, professional relationships with active filtering for platform integrity[cite: 1].</p>
-                <ul>
-                    <li><strong>Manual Review:</strong> Profiles checked over several days to block bots[cite: 1].</li>
-                    <li><strong>Social Handshake:</strong> Share ID directly via original Instagram/YouTube messaging[cite: 1].</li>
-                    <li><strong>AI Co-Pilot:</strong> Manages IDs, answers queries, and builds deep compatibility matches[cite: 1].</li>
-                </ul>
-            </div>
+    <div class="mobile-panel hidden-panel px-5 pb-5" id="mobile-menu">
+     <div class="rounded-2xl bg-white soft-card p-4 grid gap-3"><a data-template-id="mobile-discover" class="canva-link nav-link focus-ring" href="#dashboard" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Discover Creators</a> <a data-template-id="mobile-companies" class="canva-link nav-link focus-ring" href="#companies" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">For Companies</a> <a data-template-id="mobile-how" class="canva-link nav-link focus-ring" href="#how-it-works" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">How It Works</a> <a data-template-id="mobile-trust" class="canva-link nav-link focus-ring" href="#trust" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Trust &amp; Verification</a>
+     </div>
+    </div>
+   </header>
+   <main id="top">
+    <section class="section-pad pt-16">
+     <div class="section-inner grid lg:grid-cols-[1.02fr_.98fr] gap-12 items-center">
+      <div>
+       <p data-template-id="hero-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">The trusted collaboration layer</p>
+       <h1 data-template-id="hero-title" class="canva-text mt-4 font-black tracking-[-.06em] leading-[.96] text-[clamp(46px,7vw,82px)]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 32px;">Empowering Creators &amp; Companies</h1>
+       <p data-template-id="hero-copy" class="canva-text mt-7 max-w-xl text-[17px] leading-8 text-[#514b47]" style="color: rgb(81, 75, 71); font-weight: 500; font-style: normal; font-size: 16px;">Creator Finder helps creators discover verified opportunities and helps companies find authentic talent for product campaigns that feel real.</p>
+       <div class="mt-8 flex flex-wrap gap-3"><a data-template-id="hero-creator-cta" class="canva-button primary-btn focus-ring" href="#opportunities" style="background: rgb(201, 29, 61); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">Find Opportunities</a> <a data-template-id="hero-company-cta" class="canva-button secondary-btn focus-ring" href="#dashboard" style="background: rgb(255, 255, 255); color: rgb(23, 23, 23); font-weight: 800; font-style: normal; font-size: 16px;">Find Creators</a>
+       </div>
+       <div class="mt-9 flex items-center gap-3 text-sm font-semibold text-[#514b47]">
+        <span class="status-dot"></span><span data-template-id="hero-trust-note" class="canva-text" style="color: rgb(81, 75, 71); font-weight: 600; font-style: normal; font-size: 16px;">Designed for creator-led, trusted growth</span>
+       </div>
+      </div>
+      <div class="relative">
+       <div class="absolute -top-5 -right-5 w-32 h-32 rounded-full bg-[#f5c9c7]"></div>
+       <div class="relative rounded-[30px] overflow-hidden bg-[#101010] shadow-2xl p-3"><img data-template-id="hero-image" loading="lazy" class="canva-image h-[420px] w-full rounded-[21px] object-cover opacity-80" src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" alt="Diverse team collaborating in a meeting, showcasing teamwork and cooperation in a modern workplace.">
+        <div class="absolute bottom-8 left-8 right-8 rounded-2xl bg-white/95 p-5 shadow-xl">
+         <div class="flex justify-between gap-4">
+          <div>
+           <p data-template-id="hero-card-label" class="canva-text text-xs font-extrabold uppercase tracking-[.15em] text-[#c91d3d]" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Campaign fit</p>
+           <p data-template-id="hero-card-title" class="canva-text mt-1 font-extrabold text-lg" style="color: rgb(10, 10, 10); font-weight: 800; font-style: normal; font-size: 16px;">Authentic people. Better product stories.</p>
+          </div>
+          <div class="icon-disc">
+           <i data-lucide="sparkles" width="21"></i>
+          </div>
+         </div>
+         <div class="mt-4 h-2 rounded-full bg-[#f0e7e1] overflow-hidden">
+          <div class="h-full w-[78%] bg-[#c91d3d] rounded-full"></div>
+         </div>
         </div>
+       </div>
+      </div>
+     </div>
     </section>
+    <section class="section-pad pt-7" id="problem">
+     <div class="section-inner">
+      <p data-template-id="problem-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">The gap we close</p>
+      <h2 data-template-id="problem-title" class="canva-text section-title mt-3" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Great collaborations should not depend on luck.</h2>
+      <div class="red-rule"></div>
+      <div class="grid md:grid-cols-2 gap-6">
+       <article data-template-id="creator-problem-card" class="canva-card card-line bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <div class="icon-disc">
+         <i data-lucide="user-round-search"></i>
+        </div>
+        <h3 data-template-id="creator-problem-title" class="canva-text mt-5 text-2xl font-black tracking-[-.04em]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Creators need a clearer path</h3>
+        <p data-template-id="creator-problem-copy" class="canva-text mt-3 text-[#5a5551] leading-7" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Standing out, finding the right niche, and accessing reliable opportunities can feel scattered and uncertain.</p>
+       </article>
+       <article data-template-id="company-problem-card" class="canva-card card-line bg-[#171717] rounded-[22px] p-7 shadow-xl" style="background: rgb(23, 23, 23);">
+        <div class="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center">
+         <i data-lucide="scan-search"></i>
+        </div>
+        <h3 data-template-id="company-problem-title" class="canva-text mt-5 text-2xl font-black tracking-[-.04em]" style="color: rgb(255, 255, 255); font-weight: 900; font-style: normal; font-size: 19px;">Companies need the right talent</h3>
+        <p data-template-id="company-problem-copy" class="canva-text mt-3 leading-7" style="color: rgb(231, 225, 220); font-weight: 500; font-style: normal; font-size: 16px;">Finding creators who truly align with a product, audience, and brand identity takes time and confidence.</p>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="section-pad" id="how-it-works">
+     <div class="section-inner">
+      <p data-template-id="steps-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">How Creator Finder works</p>
+      <h2 data-template-id="steps-title" class="canva-text section-title mt-3" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Discover. Build. Grow.</h2>
+      <div class="red-rule"></div>
+      <div class="grid md:grid-cols-3 gap-5">
+       <article data-template-id="step-one-card" class="canva-card lift bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <span class="step-num">01</span><i data-lucide="search" class="mt-8 text-[#c91d3d]"></i>
+        <h3 data-template-id="step-one-title" class="canva-text mt-5 text-2xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Discover</h3>
+        <p data-template-id="step-one-copy" class="canva-text mt-3 leading-7 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Explore relevant, verified opportunities and talent through rich profile signals.</p>
+       </article>
+       <article data-template-id="step-two-card" class="canva-card lift bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <span class="step-num">02</span><i data-lucide="handshake" class="mt-8 text-[#c91d3d]"></i>
+        <h3 data-template-id="step-two-title" class="canva-text mt-5 text-2xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Build</h3>
+        <p data-template-id="step-two-copy" class="canva-text mt-3 leading-7 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Create trusted collaborations with clear context, contact paths, and campaign intent.</p>
+       </article>
+       <article data-template-id="step-three-card" class="canva-card lift bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <span class="step-num">03</span><i data-lucide="trending-up" class="mt-8 text-[#c91d3d]"></i>
+        <h3 data-template-id="step-three-title" class="canva-text mt-5 text-2xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Grow</h3>
+        <p data-template-id="step-three-copy" class="canva-text mt-3 leading-7 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Turn successful campaigns into stronger audiences, relationships, and momentum.</p>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="section-pad" id="opportunities">
+     <div class="section-inner profile-grid grid lg:grid-cols-2 gap-7">
+      <article data-template-id="creator-benefits-card" class="canva-card rounded-[26px] bg-[#171717] text-white p-8 md:p-10 shadow-xl" style="background: rgb(23, 23, 23);">
+       <p data-template-id="creator-benefits-eyebrow" class="canva-text eyebrow text-[#ff8fa3]" style="color: rgb(255, 143, 163); font-weight: 800; font-style: normal; font-size: 16px;">For creators</p>
+       <h2 data-template-id="creator-benefits-title" class="canva-text mt-3 text-4xl font-black tracking-[-.05em]" style="color: rgb(255, 255, 255); font-weight: 900; font-style: normal; font-size: 24px;">Your work deserves a trusted stage.</h2>
+       <ul class="mt-8 space-y-5">
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#ff8fa3] shrink-0"></i><span data-template-id="creator-benefit-one" class="canva-text leading-7" style="color: rgb(255, 255, 255); font-weight: 500; font-style: normal; font-size: 16px;">Discover relevant brands and campaigns aligned with your niche.</span></li>
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#ff8fa3] shrink-0"></i><span data-template-id="creator-benefit-two" class="canva-text leading-7" style="color: rgb(255, 255, 255); font-weight: 500; font-style: normal; font-size: 16px;">Showcase rich profiles, portfolio work, and your distinct creative voice.</span></li>
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#ff8fa3] shrink-0"></i><span data-template-id="creator-benefit-three" class="canva-text leading-7" style="color: rgb(255, 255, 255); font-weight: 500; font-style: normal; font-size: 16px;">Access verified opportunities with more confidence.</span></li>
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#ff8fa3] shrink-0"></i><span data-template-id="creator-benefit-four" class="canva-text leading-7" style="color: rgb(255, 255, 255); font-weight: 500; font-style: normal; font-size: 16px;">Reduce scam risk through clear verification signals and human review.</span></li>
+       </ul>
+      </article>
+      <article data-template-id="company-benefits-card" class="canva-card card-line rounded-[26px] bg-white p-8 md:p-10 soft-card" id="companies" style="background: rgb(255, 255, 255);">
+       <p data-template-id="company-benefits-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">For companies</p>
+       <h2 data-template-id="company-benefits-title" class="canva-text mt-3 text-4xl font-black tracking-[-.05em]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Find people who make your product feel personal.</h2>
+       <ul class="mt-8 space-y-5">
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#c91d3d] shrink-0"></i><span data-template-id="company-benefit-one" class="canva-text leading-7" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Find creators aligned with your product, audience, and brand identity.</span></li>
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#c91d3d] shrink-0"></i><span data-template-id="company-benefit-two" class="canva-text leading-7" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Filter by niche, location, audience, and collaboration type.</span></li>
+        <li class="flex gap-4"><i data-lucide="check" class="text-[#c91d3d] shrink-0"></i><span data-template-id="company-benefit-three" class="canva-text leading-7" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Manage outreach, contacts, and collaboration momentum in one hub.</span></li>
+       </ul>
+      </article>
+     </div>
+    </section>
+    <section class="section-pad pt-4">
+     <div class="section-inner">
+      <p data-template-id="preview-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Profiles with context</p>
+      <h2 data-template-id="preview-title" class="canva-text section-title mt-3" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Meet the people behind the collaboration.</h2>
+      <div class="red-rule"></div>
+      <div class="profile-grid grid lg:grid-cols-2 gap-7">
+       <article data-template-id="creator-profile-card" class="canva-card bg-white rounded-[25px] soft-card overflow-hidden" style="background: rgb(255, 255, 255);">
+        <div class="p-5 flex justify-between items-center border-b border-black/5">
+         <span data-template-id="creator-sample-label" class="canva-tag text-[11px] font-extrabold tracking-widest text-[#c91d3d] uppercase" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Sample creator profile</span><span class="inline-flex items-center gap-1 text-xs font-bold text-[#17724b]"><i data-lucide="badge-check" width="16"></i><span data-template-id="creator-verified-label" class="canva-text" style="color: rgb(23, 114, 75); font-weight: 700; font-style: normal; font-size: 16px;">Verified sample</span></span>
+        </div>
+        <div class="p-6">
+         <div class="flex gap-4 items-center">
+          <img data-template-id="creator-profile-image" loading="lazy" class="canva-image w-20 h-20 rounded-full object-cover" src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Cheerful young African American female in eyeglasses and casual clothes smiling while using a laptop.">
+          <div>
+           <h3 data-template-id="creator-name" class="canva-text text-2xl font-black tracking-[-.04em]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Maya Kapoor</h3>
+           <p data-template-id="creator-role" class="canva-text mt-1 text-sm text-[#625d58]" style="color: rgb(98, 93, 88); font-weight: 500; font-style: normal; font-size: 16px;">Beauty, lifestyle &amp; storytelling creator</p>
+           <p data-template-id="creator-location" class="canva-text mt-1 text-xs font-bold text-[#c91d3d]" style="color: rgb(201, 29, 61); font-weight: 700; font-style: normal; font-size: 16px;">Mumbai, India · Open to remote</p>
+          </div>
+         </div>
+         <p data-template-id="creator-intro" class="canva-text mt-5 text-sm leading-6 text-[#514b47]" style="color: rgb(81, 75, 71); font-weight: 500; font-style: normal; font-size: 16px;">I make thoughtful, high-energy content for brands that want their products to become part of a real daily ritual.</p>
+         <div class="mt-5 grid grid-cols-2 gap-3">
+          <div class="rounded-xl bg-[#fbf4ed] p-4">
+           <p data-template-id="creator-niche-label" class="canva-text text-[10px] font-black uppercase tracking-wider text-[#817a75]" style="color: rgb(129, 122, 117); font-weight: 800; font-style: normal; font-size: 16px;">Niche</p>
+           <p data-template-id="creator-niche" class="canva-text mt-1 text-sm font-extrabold" style="color: rgb(10, 10, 10); font-weight: 800; font-style: normal; font-size: 16px;">Beauty &amp; wellness</p>
+          </div>
+          <div class="rounded-xl bg-[#fbf4ed] p-4">
+           <p data-template-id="creator-experience-label" class="canva-text text-[10px] font-black uppercase tracking-wider text-[#817a75]" style="color: rgb(129, 122, 117); font-weight: 800; font-style: normal; font-size: 16px;">Experience</p>
+           <p data-template-id="creator-experience" class="canva-text mt-1 text-sm font-extrabold" style="color: rgb(10, 10, 10); font-weight: 800; font-style: normal; font-size: 16px;">4 years · Product campaigns</p>
+          </div>
+         </div>
+         <div class="mt-5 rounded-xl overflow-hidden bg-[#171717] relative">
+          <div class="h-24 flex items-center justify-center text-white">
+           <i data-lucide="play-circle" width="30"></i>
+          </div><span data-template-id="creator-video-label" class="canva-tag absolute bottom-3 left-3 text-[11px] bg-white px-2 py-1 rounded-md font-bold" style="background: rgb(255, 255, 255); color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Sample intro video</span>
+         </div>
+         <div class="mt-5 flex flex-wrap gap-2">
+          <span data-template-id="creator-portfolio-one" class="canva-tag rounded-full bg-[#eff4f9] px-3 py-2 text-xs font-bold" style="background: rgb(239, 244, 249); color: rgb(14, 86, 155); font-weight: 700; font-style: normal; font-size: 16px;">Portfolio: skincare reel</span><span data-template-id="creator-portfolio-two" class="canva-tag rounded-full bg-[#eff4f9] px-3 py-2 text-xs font-bold" style="background: rgb(239, 244, 249); color: rgb(14, 86, 155); font-weight: 700; font-style: normal; font-size: 16px;">Portfolio: launch story</span><span data-template-id="creator-contact" class="canva-tag rounded-full bg-[#ffe9e9] px-3 py-2 text-xs font-bold text-[#a81732]" style="background: rgb(255, 233, 233); color: rgb(168, 23, 50); font-weight: 700; font-style: normal; font-size: 16px;">Instagram · WhatsApp · Email</span>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="company-profile-card" class="canva-card bg-white rounded-[25px] soft-card overflow-hidden" style="background: rgb(255, 255, 255);">
+        <div class="p-5 flex justify-between items-center border-b border-black/5">
+         <span data-template-id="company-sample-label" class="canva-tag text-[11px] font-extrabold tracking-widest text-[#c91d3d] uppercase" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Sample company profile</span><span class="inline-flex items-center gap-1 text-xs font-bold text-[#0e569b]"><i data-lucide="briefcase-business" width="15"></i><span data-template-id="company-type-label" class="canva-text" style="color: rgb(14, 86, 155); font-weight: 700; font-style: normal; font-size: 16px;">Product campaign</span></span>
+        </div>
+        <div class="p-6">
+         <div class="flex gap-4 items-center">
+          <div data-template-id="company-logo-box" class="canva-panel w-20 h-20 rounded-2xl bg-[#0e569b] text-white grid place-items-center font-black text-2xl" style="background: rgb(14, 86, 155); color: rgb(255, 255, 255);">
+           N
+          </div>
+          <div>
+           <h3 data-template-id="company-name" class="canva-text text-2xl font-black tracking-[-.04em]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Nouri Skincare</h3>
+           <p data-template-id="company-category" class="canva-text mt-1 text-sm text-[#625d58]" style="color: rgb(98, 93, 88); font-weight: 500; font-style: normal; font-size: 16px;">Plant-powered personal care</p>
+           <p data-template-id="company-social" class="canva-text mt-1 text-xs font-bold text-[#0e569b]" style="color: rgb(14, 86, 155); font-weight: 700; font-style: normal; font-size: 16px;">@nouriskin · Instagram + YouTube</p>
+          </div>
+         </div>
+         <p data-template-id="company-product" class="canva-text mt-5 text-sm leading-6 text-[#514b47]" style="color: rgb(81, 75, 71); font-weight: 500; font-style: normal; font-size: 16px;">A modern skincare line built around uncomplicated routines, ingredient clarity, and sensitive-skin confidence.</p>
+         <div class="mt-5 rounded-xl bg-[#fbf4ed] p-4">
+          <p data-template-id="company-needs-label" class="canva-text text-[10px] font-black uppercase tracking-wider text-[#817a75]" style="color: rgb(129, 122, 117); font-weight: 800; font-style: normal; font-size: 16px;">Creator needs</p>
+          <p data-template-id="company-needs" class="canva-text mt-2 text-sm leading-6 font-semibold" style="color: rgb(23, 23, 23); font-weight: 600; font-style: normal; font-size: 16px;">Beauty and wellness storytellers for product rituals, short-form demos, and honest routine content.</p>
+         </div>
+         <div class="mt-5 flex flex-wrap gap-2">
+          <span data-template-id="company-contact-email" class="canva-tag rounded-full bg-[#eff4f9] px-3 py-2 text-xs font-bold" style="background: rgb(239, 244, 249); color: rgb(14, 86, 155); font-weight: 700; font-style: normal; font-size: 16px;">hello@nouri.example</span><span data-template-id="company-contact-whatsapp" class="canva-tag rounded-full bg-[#eff4f9] px-3 py-2 text-xs font-bold" style="background: rgb(239, 244, 249); color: rgb(14, 86, 155); font-weight: 700; font-style: normal; font-size: 16px;">WhatsApp contact available</span>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="section-pad" id="trust">
+     <div class="section-inner rounded-[30px] bg-[#171717] px-7 py-12 md:px-12 text-white shadow-2xl">
+      <p data-template-id="trust-eyebrow" class="canva-text eyebrow text-[#ff9aad]" style="color: rgb(255, 154, 173); font-weight: 800; font-style: normal; font-size: 16px;">Trust &amp; verification</p>
+      <h2 data-template-id="trust-title" class="canva-text mt-3 text-[clamp(32px,5vw,57px)] leading-none font-black tracking-[-.05em] max-w-3xl" style="color: rgb(255, 255, 255); font-weight: 900; font-style: normal; font-size: 24px;">Trust is built with people in the loop.</h2>
+      <p data-template-id="trust-copy" class="canva-text mt-5 max-w-2xl leading-7 text-white/75" style="color: rgb(220, 213, 208); font-weight: 500; font-style: normal; font-size: 16px;">Creator Finder uses clear confirmation steps and careful human review. Verification is not an automatic approval promise.</p>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+       <div class="rounded-2xl bg-white/8 p-5">
+        <i data-lucide="mail-check" class="text-[#ff9aad]"></i>
+        <p data-template-id="trust-step-one" class="canva-text mt-4 font-bold leading-6" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Sign up with email to begin your account request.</p>
+       </div>
+       <div class="rounded-2xl bg-white/8 p-5">
+        <i data-lucide="key-round" class="text-[#ff9aad]"></i>
+        <p data-template-id="trust-step-two" class="canva-text mt-4 font-bold leading-6" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Enter a one-time verification code sent to your inbox.</p>
+       </div>
+       <div class="rounded-2xl bg-white/8 p-5">
+        <i data-lucide="clipboard-check" class="text-[#ff9aad]"></i>
+        <p data-template-id="trust-step-three" class="canva-text mt-4 font-bold leading-6" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">A profile review is completed over several days by the team.</p>
+       </div>
+       <div class="rounded-2xl bg-white/8 p-5">
+        <i data-lucide="instagram" class="text-[#ff9aad]"></i>
+        <p data-template-id="trust-step-four" class="canva-text mt-4 font-bold leading-6" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Public Instagram, YouTube, and X profiles can be checked for authenticity signals.</p>
+       </div>
+       <div class="rounded-2xl bg-white/8 p-5">
+        <i data-lucide="send" class="text-[#ff9aad]"></i>
+        <p data-template-id="trust-step-five" class="canva-text mt-4 font-bold leading-6" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Creators can share their Creator Finder ID through an authentic social account.</p>
+       </div>
+       <div class="rounded-2xl bg-white/8 p-5">
+        <i data-lucide="shield-check" class="text-[#ff9aad]"></i>
+        <p data-template-id="trust-step-six" class="canva-text mt-4 font-bold leading-6" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Approved profiles receive a trust badge; suspicious profiles may be rejected after review.</p>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="section-pad" id="dashboard">
+     <div class="section-inner">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
+       <div>
+        <p data-template-id="dashboard-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Collaboration hub</p>
+        <h2 data-template-id="dashboard-title" class="canva-text section-title mt-3" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">A clear path from discovery to outreach.</h2>
+       </div>
+       <p data-template-id="dashboard-sidecopy" class="canva-text max-w-sm leading-6 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Explore profiles, refine the fit, save contacts, and move the right conversation forward.</p>
+      </div>
+      <div class="red-rule"></div>
+      <div data-template-id="dashboard-shell" class="canva-panel bg-white rounded-[28px] soft-card overflow-hidden" style="background: rgb(255, 255, 255);">
+       <div class="p-5 border-b border-black/5 flex flex-col lg:flex-row gap-3 justify-between">
+        <div>
+         <p data-template-id="dashboard-label" class="canva-text text-xs font-black uppercase tracking-widest text-[#c91d3d]" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Creator Finder dashboard · sample</p>
+         <p data-template-id="dashboard-greeting" class="canva-text mt-1 text-lg font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 16px;">Nouri Skincare workspace</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+         <label class="sr-only" for="niche-filter">Filter by niche</label><select id="niche-filter" class="filter-select focus-ring"><option>Beauty &amp; wellness</option><option>Tech</option><option>Food</option></select><label class="sr-only" for="location-filter">Filter by location</label><select id="location-filter" class="filter-select focus-ring"><option>India</option><option>Global</option><option>Remote</option></select>
+        </div>
+       </div>
+       <div class="grid lg:grid-cols-[1.25fr_.75fr]">
+        <div class="p-6 border-b lg:border-b-0 lg:border-r border-black/5">
+         <div class="flex justify-between items-center">
+          <h3 data-template-id="dashboard-match-title" class="canva-text text-xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Recommended creator</h3><span data-template-id="dashboard-match-score" class="canva-tag rounded-full bg-[#e8f3ec] px-3 py-1 text-xs font-black text-[#18704c]" style="background: rgb(232, 243, 236); color: rgb(24, 112, 76); font-weight: 800; font-style: normal; font-size: 16px;">Strong fit</span>
+         </div>
+         <div class="mt-5 rounded-2xl bg-[#fbf4ed] p-5 flex flex-col sm:flex-row gap-5 sm:items-center"><img data-template-id="dashboard-creator-image" loading="lazy" class="canva-image w-16 h-16 rounded-full object-cover" src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Maya Kapoor sample creator portrait.">
+          <div class="flex-1">
+           <p data-template-id="dashboard-creator-name" class="canva-text font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 16px;">Maya Kapoor</p>
+           <p data-template-id="dashboard-creator-meta" class="canva-text mt-1 text-sm text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Beauty &amp; wellness · Mumbai · Verified sample</p><a data-template-id="dashboard-portfolio-link" href="#opportunities" class="canva-link mt-2 inline-block text-xs font-extrabold text-[#0e569b] focus-ring" style="color: rgb(14, 86, 155); font-weight: 800; font-style: normal; font-size: 16px;">View portfolio preview →</a>
+          </div><button data-template-id="connect-button" id="connect-button" type="button" class="canva-button primary-btn focus-ring text-sm" style="background: rgb(201, 29, 61); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">Connect with Maya</button> <span data-template-id="connected-state" id="connected-state" class="canva-tag hidden text-sm font-extrabold text-[#17724b]" aria-live="polite" style="color: rgb(23, 114, 75); font-weight: 800; font-style: normal; font-size: 16px;">Connection requested</span>
+         </div>
+         <p id="connection-message" class="mt-4 text-sm font-semibold text-[#514b47]" aria-live="polite"></p>
+         <div class="mt-6">
+          <h3 data-template-id="dashboard-activity-title" class="canva-text font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Recent activity</h3>
+          <div class="mt-3 space-y-3">
+           <div class="flex gap-3 text-sm">
+            <i data-lucide="circle-check-big" width="18" class="text-[#c91d3d] shrink-0"></i><span data-template-id="activity-one" class="canva-text" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Profile verification details reviewed</span>
+           </div>
+           <div class="flex gap-3 text-sm">
+            <i data-lucide="link" width="18" class="text-[#c91d3d] shrink-0"></i><span data-template-id="activity-two" class="canva-text" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Portfolio link added to your campaign shortlist</span>
+           </div>
+          </div>
+         </div>
+        </div>
+        <aside class="p-6 bg-[#fcfaf8]">
+         <h3 data-template-id="workflow-title" class="canva-text text-xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Connection workflow</h3>
+         <div class="mt-5 space-y-5">
+          <div class="flex gap-3">
+           <span class="step-num shrink-0">1</span>
+           <p data-template-id="workflow-one" class="canva-text text-sm leading-6 pt-1" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Discover profiles with relevant filters and verification context.</p>
+          </div>
+          <div class="flex gap-3">
+           <span class="step-num shrink-0">2</span>
+           <p data-template-id="workflow-two" class="canva-text text-sm leading-6 pt-1" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Review creator work, contact options, and campaign alignment.</p>
+          </div>
+          <div class="flex gap-3">
+           <span class="step-num shrink-0">3</span>
+           <p data-template-id="workflow-three" class="canva-text text-sm leading-6 pt-1" style="color: rgb(23, 23, 23); font-weight: 500; font-style: normal; font-size: 16px;">Submit outreach and manage the relationship in one place.</p>
+          </div>
+         </div>
+        </aside>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="section-pad pt-3">
+     <div class="section-inner grid lg:grid-cols-2 gap-7 items-center">
+      <div>
+       <p data-template-id="ai-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Your platform guide</p>
+       <h2 data-template-id="ai-title" class="canva-text section-title mt-3" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">An assistant for more confident next steps.</h2>
+       <div class="red-rule"></div>
+       <p data-template-id="ai-copy" class="canva-text max-w-xl leading-7 text-[#554f4a]" style="color: rgb(85, 79, 74); font-weight: 500; font-style: normal; font-size: 16px;">The Creator Finder assistant supports your decisions with useful context. It helps you navigate the platform; it does not make collaboration or verification decisions on its own.</p>
+       <div class="mt-7 space-y-4">
+        <div class="flex gap-3">
+         <i data-lucide="bot" class="text-[#c91d3d]"></i><span data-template-id="ai-benefit-one" class="canva-text leading-6" style="color: rgb(23, 23, 23); font-weight: 600; font-style: normal; font-size: 16px;">Manage Creator Finder IDs and understand verification steps.</span>
+        </div>
+        <div class="flex gap-3">
+         <i data-lucide="git-compare-arrows" class="text-[#c91d3d]"></i><span data-template-id="ai-benefit-two" class="canva-text leading-6" style="color: rgb(23, 23, 23); font-weight: 600; font-style: normal; font-size: 16px;">Surface compatibility suggestions across creators and companies.</span>
+        </div>
+        <div class="flex gap-3">
+         <i data-lucide="message-circle-question" class="text-[#c91d3d]"></i><span data-template-id="ai-benefit-three" class="canva-text leading-6" style="color: rgb(23, 23, 23); font-weight: 600; font-style: normal; font-size: 16px;">Answer practical questions about profiles, outreach, and platform tools.</span>
+        </div>
+       </div>
+      </div>
+      <aside data-template-id="assistant-panel" class="canva-panel rounded-[25px] bg-[#0e569b] p-6 md:p-8 text-white shadow-xl" style="background: rgb(14, 86, 155);">
+       <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-white text-[#0e569b] grid place-items-center">
+         <i data-lucide="sparkles"></i>
+        </div>
+        <div>
+         <p data-template-id="assistant-label" class="canva-text text-xs font-bold uppercase tracking-widest text-white/70" style="color: rgb(213, 234, 255); font-weight: 700; font-style: normal; font-size: 16px;">Creator Finder assistant</p>
+         <h3 data-template-id="assistant-title" class="canva-text font-black text-xl" style="color: rgb(255, 255, 255); font-weight: 900; font-style: normal; font-size: 19px;">How can I guide you?</h3>
+        </div>
+       </div>
+       <div class="mt-7 rounded-2xl bg-white/10 p-4">
+        <p data-template-id="assistant-message" class="canva-text text-sm leading-6" style="color: rgb(255, 255, 255); font-weight: 500; font-style: normal; font-size: 16px;">Ask about compatibility, Creator Finder IDs, or the human verification process.</p>
+       </div>
+       <form id="assistant-form" class="mt-5 flex gap-2">
+        <label class="sr-only" for="assistant-input">Ask the Creator Finder assistant</label><input id="assistant-input" class="min-w-0 flex-1 rounded-xl px-4 py-3 text-sm text-[#0a0a0a] focus-ring" type="text" placeholder="Ask about matching or verification"><button data-template-id="assistant-send" class="canva-button rounded-xl bg-[#c91d3d] px-4 font-bold focus-ring" type="submit" style="background: rgb(201, 29, 61); color: rgb(255, 255, 255);"><i data-lucide="send" width="17"></i></button>
+       </form>
+       <p id="assistant-response" class="mt-4 text-sm leading-6 text-white/85" aria-live="polite"></p>
+      </aside>
+     </div>
+    </section>
+    <section class="section-pad">
+     <div class="section-inner rounded-[30px] bg-[#f8dfdc] p-8 md:p-12 grid lg:grid-cols-[.7fr_1.3fr] gap-9 items-center">
+      <div>
+       <p data-template-id="opportunity-estimate" class="canva-text font-black tracking-[-.08em] text-[clamp(72px,12vw,150px)] leading-none" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 16px;">20%+</p>
+       <div class="h-2 bg-[#c91d3d] mt-5"></div>
+       <p data-template-id="opportunity-caption" class="canva-text mt-5 font-black uppercase tracking-[.14em] text-sm" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 16px;">Growth opportunity estimate</p>
+      </div>
+      <div>
+       <p data-template-id="opportunity-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Business opportunity</p>
+       <h2 data-template-id="opportunity-title" class="canva-text mt-3 text-4xl md:text-5xl leading-none font-black tracking-[-.05em]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Creator-led momentum is becoming a business essential.</h2>
+       <p data-template-id="opportunity-copy" class="canva-text mt-6 leading-8 text-[#413a36]" style="color: rgb(65, 58, 54); font-weight: 500; font-style: normal; font-size: 16px;">The creator economy is growing and brands are investing in authentic marketing. Creator Finder can build value through premium features and strategic partnerships that help creators and companies work with more clarity.</p>
+      </div>
+     </div>
+    </section>
+    <section class="section-pad pt-4" id="roadmap">
+     <div class="section-inner">
+      <p data-template-id="roadmap-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Roadmap</p>
+      <h2 data-template-id="roadmap-title" class="canva-text section-title mt-3" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Built for the next wave of creator-company collaboration.</h2>
+      <div class="red-rule"></div>
+      <div class="grid md:grid-cols-3 gap-5">
+       <article data-template-id="roadmap-short-card" class="canva-card card-line bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <p data-template-id="roadmap-short-number" class="canva-text text-xs font-black tracking-widest text-[#c91d3d]" style="color: rgb(201, 29, 61); font-weight: 900; font-style: normal; font-size: 16px;">01 · SHORT TERM</p>
+        <h3 data-template-id="roadmap-short-title" class="canva-text mt-3 text-2xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Launch beta</h3>
+        <p data-template-id="roadmap-short-copy" class="canva-text mt-4 leading-7 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Launch beta and onboard an initial cohort of verified creators and companies.</p>
+       </article>
+       <article data-template-id="roadmap-mid-card" class="canva-card card-line bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <p data-template-id="roadmap-mid-number" class="canva-text text-xs font-black tracking-widest text-[#c91d3d]" style="color: rgb(201, 29, 61); font-weight: 900; font-style: normal; font-size: 16px;">02 · MID TERM</p>
+        <h3 data-template-id="roadmap-mid-title" class="canva-text mt-3 text-2xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Make matching smarter</h3>
+        <p data-template-id="roadmap-mid-copy" class="canva-text mt-4 leading-7 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Enhance AI assistance, analytics, and smart filters for more informed discovery.</p>
+       </article>
+       <article data-template-id="roadmap-long-card" class="canva-card card-line bg-white rounded-[22px] p-7 soft-card" style="background: rgb(255, 255, 255);">
+        <p data-template-id="roadmap-long-number" class="canva-text text-xs font-black tracking-widest text-[#c91d3d]" style="color: rgb(201, 29, 61); font-weight: 900; font-style: normal; font-size: 16px;">03 · LONG TERM</p>
+        <h3 data-template-id="roadmap-long-title" class="canva-text mt-3 text-2xl font-black" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 19px;">Expand the network</h3>
+        <p data-template-id="roadmap-long-copy" class="canva-text mt-4 leading-7 text-[#5a5551]" style="color: rgb(90, 85, 81); font-weight: 500; font-style: normal; font-size: 16px;">Expand globally and integrate additional social platforms as the community grows.</p>
+       </article>
+      </div>
+     </div>
+    </section>
+   </main>
+   <footer data-template-id="footer-section" class="canva-footer bg-[#171717] text-white px-6 py-12" style="background: rgb(23, 23, 23);">
+    <div class="max-w-[1180px] mx-auto grid md:grid-cols-[1.2fr_.8fr] gap-10">
+     <div>
+      <img data-template-id="footer-logo" loading="lazy" class="canva-image w-[158px] h-10 object-contain object-left" src="canva://MAHUm8pcTAc/1" alt="Creator Finder logo">
+      <p data-template-id="footer-mission" class="canva-text mt-5 max-w-md text-white/70 leading-7" style="color: rgb(222, 216, 210); font-weight: 500; font-style: normal; font-size: 16px;">Creator Finder connects authentic talent and ambitious companies for trusted, creator-led growth.</p>
+     </div>
+     <div class="grid grid-cols-2 gap-6">
+      <div>
+       <p data-template-id="footer-nav-label" class="canva-text text-xs font-black uppercase tracking-widest text-[#ff9aad]" style="color: rgb(255, 154, 173); font-weight: 800; font-style: normal; font-size: 16px;">Explore</p>
+       <div class="mt-4 grid gap-3">
+        <a data-template-id="footer-link-discover" class="canva-link text-sm text-white/80 hover:text-white focus-ring" href="#dashboard" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Discover creators</a><a data-template-id="footer-link-trust" class="canva-link text-sm text-white/80 hover:text-white focus-ring" href="#trust" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Trust &amp; verification</a><a data-template-id="footer-link-roadmap" class="canva-link text-sm text-white/80 hover:text-white focus-ring" href="#roadmap" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Roadmap</a>
+       </div>
+      </div>
+      <div>
+       <p data-template-id="footer-contact-label" class="canva-text text-xs font-black uppercase tracking-widest text-[#ff9aad]" style="color: rgb(255, 154, 173); font-weight: 800; font-style: normal; font-size: 16px;">Contact</p>
+       <p data-template-id="footer-contact" class="canva-text mt-4 text-sm text-white/80 leading-6" style="color: rgb(222, 216, 210); font-weight: 500; font-style: normal; font-size: 16px;">hello@creatorfinder.example
+Instagram: @creatorfinder</p>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div id="profile-modal" class="hidden fixed inset-0 z-50 modal-backdrop px-4 py-8 overflow-auto" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title">
+   <div class="max-w-lg mx-auto bg-white rounded-[25px] p-7 shadow-2xl">
+    <div class="flex justify-between gap-4">
+     <div>
+      <p data-template-id="modal-eyebrow" class="canva-text eyebrow" style="color: rgb(201, 29, 61); font-weight: 800; font-style: normal; font-size: 16px;">Creator Finder profile</p>
+      <h2 data-template-id="modal-title" id="profile-modal-title" class="canva-text mt-2 text-3xl font-black tracking-[-.05em]" style="color: rgb(10, 10, 10); font-weight: 900; font-style: normal; font-size: 24px;">Start your profile request</h2>
+     </div><button id="close-profile-modal" type="button" class="focus-ring rounded-lg p-2" aria-label="Close profile form"><i data-lucide="x"></i></button>
+    </div>
+    <form id="profile-form" class="mt-6 space-y-4">
+     <div>
+      <label data-template-id="profile-type-label" class="canva-text block text-sm font-bold mb-2" for="profile-type" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">I am joining as</label><select id="profile-type" class="w-full rounded-xl border border-[#ded8d2] p-3 focus-ring"><option>Creator</option><option>Company</option></select>
+     </div>
+     <div>
+      <label data-template-id="profile-name-label" class="canva-text block text-sm font-bold mb-2" for="profile-name" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Your name</label><input id="profile-name" required="" class="w-full rounded-xl border border-[#ded8d2] p-3 focus-ring" type="text">
+     </div>
+     <div>
+      <label data-template-id="profile-company-label" class="canva-text block text-sm font-bold mb-2" for="profile-company" style="color: rgb(23, 23, 23); font-weight: 700; font-style: normal; font-size: 16px;">Company or brand name</label><input id="profile-company" required="" class="w-full rounded-xl border border-[#ded8d2] p-3 focus-ring" type="text">
+     </div><button data-template-id="profile-submit" class="canva-button primary-btn focus-ring w-full" type="submit" style="background: rgb(201, 29, 61); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">Submit profile request</button>
+     <p id="profile-message" class="text-sm font-semibold" aria-live="polite"></p>
+    </form>
+   </div>
+  </div>
+  <script src="/_sdk/20ec72cea0cb85e1.editing_sdk.js" integrity="sha512-y1Lf0yXrnk1vqzLs9a/3x3pp+jSvei2Pbl+x/omYgN5b7HqLzMgs5Vx9HdgcQfw7jcDinPHCzHGQ6BsPf/68zQ=="></script>
+  <script>
+    let records = [];
+    const connectionButton = document.getElementById('connect-button');
+    const connectedState = document.getElementById('connected-state');
+    const connectionMessage = document.getElementById('connection-message');
 
-</body>
-</html>
+    const handler = {
+      onDataChanged(data) {
+        records = data;
+        const existing = records.find(r => r.record_type === 'connection' && r.creator_name === 'Maya Kapoor' && r.company_name === 'Nouri Skincare');
+        if (existing) {
+          connectionButton.classList.add('hidden');
+          connectedState.classList.remove('hidden');
+          connectionMessage.textContent = 'Your connection is saved in the collaboration hub.';
+        }
+      }
+    };
+
+    async function initData() {
+      const result = await window.dataSdk.init(handler);
+      if (!result.isOk) {
+        connectionMessage.textContent = 'The collaboration hub is temporarily unavailable. Please try again shortly.';
+      }
+    }
+
+    function setButtonLoading(button, isLoading) {
+      button.disabled = isLoading;
+      button.classList.toggle('opacity-60', isLoading);
+      button.classList.toggle('cursor-wait', isLoading);
+    }
+
+    document.getElementById('menu-button').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      const button = document.getElementById('menu-button');
+      const open = menu.classList.toggle('hidden-panel');
+      button.setAttribute('aria-expanded', String(!open));
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden-panel');
+      document.getElementById('menu-button').setAttribute('aria-expanded', 'false');
+    }));
+
+    document.getElementById('niche-filter').addEventListener('change', function() {
+      connectionMessage.textContent = this.value === 'Beauty & wellness' ? 'Showing the strongest available profile fit for your current filters.' : 'Filters updated. This demo keeps Maya’s profile visible as a sample match.';
+    });
+
+    connectionButton.addEventListener('click', async () => {
+      if (records.length >= 999) {
+        connectionMessage.textContent = 'The collaboration hub has reached its current record limit. Please remove a saved connection before adding another.';
+        return;
+      }
+      setButtonLoading(connectionButton, true);
+      connectionMessage.textContent = 'Saving your outreach connection…';
+      const result = await window.dataSdk.create({
+        record_type: 'connection',
+        creator_name: 'Maya Kapoor',
+        company_name: 'Nouri Skincare',
+        connection_status: 'Outreach requested',
+        created_at: new Date().toISOString()
+      });
+      if (!result.isOk) {
+        connectionMessage.textContent = 'We could not save this connection. Please try again.';
+      }
+      setButtonLoading(connectionButton, false);
+    });
+
+    const modal = document.getElementById('profile-modal');
+    document.getElementById('open-profile-modal').addEventListener('click', () => modal.classList.remove('hidden'));
+    document.getElementById('close-profile-modal').addEventListener('click', () => modal.classList.add('hidden'));
+    modal.addEventListener('click', event => { if (event.target === modal) modal.classList.add('hidden'); });
+
+    document.getElementById('profile-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const submit = event.currentTarget.querySelector('button[type="submit"]');
+      const message = document.getElementById('profile-message');
+      if (records.length >= 999) { message.textContent = 'Profile submissions are at capacity right now.'; return; }
+      setButtonLoading(submit, true);
+      message.textContent = 'Saving your profile request…';
+      const type = document.getElementById('profile-type').value;
+      const result = await window.dataSdk.create({
+        record_type: 'profile_intent',
+        creator_name: type === 'Creator' ? document.getElementById('profile-name').value.trim() : '',
+        company_name: type === 'Company' ? document.getElementById('profile-company').value.trim() : '',
+        connection_status: 'Profile request submitted',
+        created_at: new Date().toISOString()
+      });
+      message.textContent = result.isOk ? 'Your profile request has been saved. Our team can review it as part of the verification process.' : 'We could not save your request. Please try again.';
+      if (result.isOk) event.currentTarget.reset();
+      setButtonLoading(submit, false);
+    });
+
+    document.getElementById('assistant-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const value = document.getElementById('assistant-input').value.toLowerCase();
+      const response = document.getElementById('assistant-response');
+      if (value.includes('verify') || value.includes('badge')) response.textContent = 'Verification includes email confirmation, public social profile checks, and a human review before a trust badge is approved.';
+      else if (value.includes('match') || value.includes('creator')) response.textContent = 'I can help surface compatible profiles using niche, location, audience fit, and collaboration preferences.';
+      else if (value.includes('id')) response.textContent = 'A Creator Finder ID can be shared through an authentic public social account to support the review process.';
+      else response.textContent = 'I can guide you through Creator Finder IDs, trusted collaboration steps, compatibility suggestions, and platform questions.';
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      initData();
+    });
+  </script>
+ 
+</body></html>
